@@ -1,0 +1,7 @@
+.item{
+    background-color: aqua;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    width: 200px;
+    margin: 10px auto;
+}

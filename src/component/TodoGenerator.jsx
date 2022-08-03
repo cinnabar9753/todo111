@@ -3,6 +3,7 @@ import {useState} from "react";
 import todoSlice, {add} from "../component/todoSlice";
 import "./TodoGenerator.css"
 import { v4 } from "uuid";
+import { Button } from 'antd';
 import { addTodo } from "../apis/todoApi";
 
 function TodoGenerator(){
@@ -21,11 +22,15 @@ function TodoGenerator(){
         }).catch((err)=>{
             console.log(err)
         })
+
     }
     return(
         <div className="input-box">
             <input type="text" onChange={handleChange}></input>
-            <button className="add-btn" onClick={handleClick}>add</button>
+
+
+            <Button type="danger" onClick={handleClick}>ADD</Button>
+            
         </div>
     )
 }

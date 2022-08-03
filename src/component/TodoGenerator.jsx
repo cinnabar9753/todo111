@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import {useState} from "react";
-import {add} from "../component/todoSlice";
+import todoSlice, {add} from "../component/todoSlice";
+import "./TodoGenerator.css"
+import { v4 } from "uuid";
+import { addTodo } from "../apis/todoApi";
 
 function TodoGenerator(){
     const dispatch = useDispatch();
@@ -11,14 +14,18 @@ function TodoGenerator(){
     const handleClick = (e) => {
         const todo= {
             context,
-            done: false
         }
-        dispatch(add(todo));
+        // dispatch(add(todo));
+        addTodo(todo).then((response)=>{
+            dispatch(add(response.data))
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
     return(
-        <div>
+        <div className="input-box">
             <input type="text" onChange={handleChange}></input>
-            <button onClick={handleClick}>add</button>
+            <button className="add-btn" onClick={handleClick}>add</button>
         </div>
     )
 }
